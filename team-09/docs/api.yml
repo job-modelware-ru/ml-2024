@@ -1,0 +1,391 @@
+---
+openapi: 3.0.0
+info:
+  title: FastAPI
+  version: 0.1.0
+paths:
+  "/":
+    get:
+      summary: Read Root
+      operationId: read_root__get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  "/channels/":
+    get:
+      summary: Get Channels
+      operationId: get_channels_channels__get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  "$ref": "#/components/schemas/ChannelMini"
+                type: array
+                title: Response Get Channels Channels  Get
+  "/channel-by-category/{category}":
+    post:
+      summary: Request Channel Downloading By Category
+      operationId: request_channel_downloading_by_category_channel_by_category__category__post
+      parameters:
+      - name: category
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Category
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ScrapAnalyseRequests"
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/HTTPValidationError"
+  "/channel-by-id/{channel_id}":
+    post:
+      summary: Request Channel Downloading By Id
+      operationId: request_channel_downloading_by_id_channel_by_id__channel_id__post
+      parameters:
+      - name: channel_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Channel Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ScrapAnalyseRequests"
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/HTTPValidationError"
+  "/video-by-id/{video_id}":
+    post:
+      summary: Request Channel Downloading By Video Id
+      operationId: request_channel_downloading_by_video_id_video_by_id__video_id__post
+      parameters:
+      - name: video_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Video Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ScrapAnalyseRequests"
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/HTTPValidationError"
+  "/comments-by-video-id/{video_id}":
+    post:
+      summary: Request Comments Downloading By Video Id
+      operationId: request_comments_downloading_by_video_id_comments_by_video_id__video_id__post
+      parameters:
+      - name: video_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Video Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ScrapAnalyseRequests"
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/HTTPValidationError"
+  "/channel-by-url/{channel_url}":
+    post:
+      summary: Request Channel Downloading By Url
+      operationId: request_channel_downloading_by_url_channel_by_url__channel_url__post
+      parameters:
+      - name: channel_url
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Channel Url
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ScrapAnalyseRequests"
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/HTTPValidationError"
+  "/channel-by-video-url/":
+    post:
+      summary: Request Channel Downloading By Video Url
+      operationId: request_channel_downloading_by_video_url_channel_by_video_url__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/VideoUrl"
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ScrapAnalyseRequests"
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/HTTPValidationError"
+  "/requests/{count}":
+    get:
+      summary: Get Requests
+      operationId: get_requests_requests__count__get
+      parameters:
+      - name: count
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Count
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/HTTPValidationError"
+  "/build-video-analytics/{video_id}":
+    post:
+      summary: Build Analytics By Video Id
+      operationId: build_analytics_by_video_id_build_video_analytics__video_id__post
+      parameters:
+      - name: video_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Video Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/HTTPValidationError"
+  "/build-channel-analytics/{channel_id}":
+    post:
+      summary: Build Analytics By Channel Id
+      operationId: build_analytics_by_channel_id_build_channel_analytics__channel_id__post
+      parameters:
+      - name: channel_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Channel Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/HTTPValidationError"
+  "/get-analytics/{type}/{id}":
+    get:
+      summary: Get Analytics By Type And Id
+      operationId: get_analytics_by_type_and_id_get_analytics__type___id__get
+      parameters:
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Type
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/HTTPValidationError"
+components:
+  schemas:
+    ChannelMini:
+      properties:
+        id:
+          type: string
+          title: Id
+        title:
+          type: string
+          title: Title
+        videos:
+          items:
+            "$ref": "#/components/schemas/VideoMini"
+          type: array
+          title: Videos
+      type: object
+      required:
+      - id
+      - title
+      - videos
+      title: ChannelMini
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            "$ref": "#/components/schemas/ValidationError"
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    RequestData:
+      properties:
+        channel_id:
+          type: string
+          title: Channel Id
+        channel_url:
+          type: string
+          title: Channel Url
+        category:
+          type: string
+          title: Category
+        playlist_id:
+          type: string
+          title: Playlist Id
+        pageToken:
+          type: string
+          title: Pagetoken
+        video_id:
+          type: string
+          title: Video Id
+      type: object
+      title: RequestData
+    ScrapAnalyseRequests:
+      properties:
+        type:
+          type: integer
+          title: Type
+        tasks_left:
+          type: integer
+          title: Tasks Left
+        completed:
+          type: boolean
+          title: Completed
+        date_completion:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: "integer"
+          title: Date Completion
+        data:
+          "$ref": "#/components/schemas/RequestData"
+      type: object
+      required:
+      - type
+      - tasks_left
+      - completed
+      - date_completion
+      - data
+      title: ScrapAnalyseRequests
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    VideoMini:
+      properties:
+        video_id:
+          type: string
+          title: Video Id
+        title:
+          type: string
+          title: Title
+      type: object
+      required:
+      - video_id
+      - title
+      title: VideoMini
+    VideoUrl:
+      properties:
+        video_url:
+          type: string
+          title: Video Url
+      type: object
+      title: VideoUrl
