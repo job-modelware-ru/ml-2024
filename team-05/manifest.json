@@ -1,0 +1,12 @@
+{
+    "name": "Phishing Page Checker",
+    "description": "Simple browser extension which tries to detect whether the site is suspicious or not",
+    "version": "0.1",
+    "manifest_version": 3,
+    "icons": {},
+    "action": {
+        "default_popup": "frontend/index.html"
+    },
+    "permissions": [],
+    "background":{}
+}
