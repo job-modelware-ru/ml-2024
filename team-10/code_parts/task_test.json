@@ -1,0 +1,88 @@
+[
+  {
+    "task_name" : "Обработка маленьких дефектов",
+    "task_directory": "D:\\pspod\\textile_data\\small_defects",
+    "constant_parameters":
+    {
+        "YOLOPipeline": {
+          "src_roots": ["D:\\pspod\\textile_data\\data"],
+          "defects_name": ["dedects", "defects"],
+          "test_perc": 0.2,
+          "save_stat": true
+        },
+        "filter_defects": {
+          "exclude_tags": null,
+          "include_only_tags": null,
+          "no_tag_exclude": true,
+          "area_threshold": 1000,
+          "threshold_up_direction": false
+        },
+        "form_yolo_dataset": {
+          "clear_flds": true,
+          "exclude_empty_imgs": false,
+          "val_perc": 0.2
+        }
+      },
+    "hypotheses": [
+      {
+        "name": "Значения параметров по-умолчанию",
+        "directory": "\\default_parameters_values",
+        "parameters": {
+          "YOLOPipeline": {
+            "test_dst_fld": "\\test_dst_fld",
+            "stat_fld": "\\stats"
+          },
+          "filter_defects": {
+            "presence_threshold": 5
+          },
+          "from_supervisely_to_yolo": {
+            "mask_out_roi": false,
+            "precision": 4,
+            "all_defects_one_cls": false
+          },
+          "rescale": {
+            "reduce_coef": 4,
+            "scale_size": null
+          },
+          "split_on_tiles": {
+            "tile_size": 512
+          },
+          "form_yolo_dataset": {
+            "yaml_dst": "\\data_config_test.yaml",
+            "dataset_dst_root": "\\data_test"
+          }
+        }
+      },
+      {
+        "name": "Порог присутствия дефекта в выборке имеет значение 10",
+        "directory": "\\presence_threshold_10",
+        "parameters": {
+          "YOLOPipeline": {
+            "test_dst_fld": "\\test_dst_fld",
+            "stat_fld": "\\stats"
+          },
+          "filter_defects": {
+            "presence_threshold": 10
+          },
+          "from_supervisely_to_yolo": {
+            "mask_out_roi": false,
+            "precision": 4,
+            "all_defects_one_cls": false
+          },
+          "rescale": {
+            "reduce_coef": 4,
+            "scale_size": null
+          },
+          "split_on_tiles": {
+            "tile_size": 512
+          },
+          "form_yolo_dataset": {
+            "yaml_dst": "\\data_config_test.yaml",
+            "dataset_dst_root": "\\data_test"
+          }
+        }
+      }
+    ]
+  }
+]
+
