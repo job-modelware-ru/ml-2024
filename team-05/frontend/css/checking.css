@@ -49,11 +49,46 @@ button {
 
 button#back {
     position: absolute;
-    bottom: 20px;
+    bottom: -300px;
 }
 
-.dev-text {
-    text-align: center;
-    color: black;
-    font-size: 32px;
+h1#info-header {
+    font-family: 'Montserrat';
+    font-size: 24px;
+    position: absolute;
+    top: 65px;
+}
+
+h1#score {
+    font-family: 'Montserrat';
+    font-size: 24px;
+    position: absolute;
+    top: 95px;
+}
+
+ul#features {
+    padding-top: 5px;
+    text-align:center;
+    width:400px;
+    height:300px;
+}
+
+h2#result_message {
+    font-family: 'Montserrat';
+    font-size: 18px;
+    position: absolute;
+    top: 130px;
+    width:90%;
+}
+
+li.feature {
+    font-family: 'Montserrat';
+    font-size: 16px;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 25px;
+    margin-bottom: 1em;
+    justify-content: center;
 }
