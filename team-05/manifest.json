@@ -1,16 +1,31 @@
 {
-  "manifest_version": 3,
-  "name": "Site Info Extension",
-  "version": "1.0",
-  "description": "Получает информацию о сайте: IP, длина URL, возраст домена и другие характеристики.",
-  "permissions": [
-    "activeTab",
-    "scripting"
-  ],
-  "action": {
-    "default_popup": "popup.html"
-  },
-  "background": {
-    "service_worker": "background.js"
-  }
+    "name": "Phishing Page Checker",
+    "description": "Simple browser extension which tries to detect whether the site is suspicious or not",
+    "version": "1.0",
+    "icons": {
+        "16":"icons/icon16.png",
+        "32":"icons/icon32.png",
+        "48":"icons/icon48.png",
+        "128":"icons/icon128.png"
+    },
+    "permissions": ["activeTab","declarativeContent", "storage", "webNavigation"],
+    "background": {
+        "scripts": [
+            "frontend/jquery.js",
+            "frontend/randomforest.js",
+            "frontend/background.js",
+            "frontend/features.js"
+        ],
+        "persistent": true
+    },
+    "browser_action": {
+        "default_popup": "frontend/index.html"
+    },
+    "content_scripts":[
+            {
+                "matches": ["http://*/*","https://*/*"],
+                "js": ["frontend/jquery.js","frontend/features.js"]
+            }
+        ],
+    "manifest_version": 2
 }
